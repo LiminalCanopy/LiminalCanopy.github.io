@@ -4,35 +4,115 @@
   <meta charset="utf-8">
   <title>Liminal Canopy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body {
-      max-width: 760px;
-      margin: 80px auto;
-      padding: 0 24px;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.7;
-      background: #f7f5ef;
-      color: #161616;
+    :root {
+      --bg: #f7f5ef;
+      --text: #161616;
+      --muted: #5f5b52;
+      --line: #d8d2c4;
+      --button-bg: rgba(255, 255, 255, 0.45);
+      --button-bg-hover: rgba(255, 255, 255, 0.8);
     }
+
+    body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 46px 22px 64px;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 18px;
+    }
+
     h1 {
-      font-size: 2.4rem;
+      margin: 0 0 26px;
+      font-size: clamp(2.4rem, 9vw, 4rem);
       font-weight: normal;
       letter-spacing: 0.03em;
+      line-height: 1.08;
     }
+
     h2 {
-      margin-top: 2.5rem;
+      margin-top: 42px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      font-size: 1.25rem;
       font-weight: normal;
+      letter-spacing: 0.04em;
     }
-    a {
-      color: #161616;
-      text-decoration: underline;
+
+    p {
+      margin: 0 0 18px;
     }
+
     .statement {
+      margin: 28px 0 32px;
       font-style: italic;
-      margin: 2rem 0;
+      color: var(--muted);
+    }
+
+    .description {
+      margin-bottom: 28px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    li {
+      margin: 12px 0;
+    }
+
+    a {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--button-bg);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    a::after {
+      content: " ↗";
+    }
+
+    a:hover {
+      background: var(--button-bg-hover);
+    }
+
+    .note {
+      margin-top: 32px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 36px 18px 54px;
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      h1 {
+        margin-bottom: 22px;
+      }
+
+      h2 {
+        margin-top: 34px;
+      }
+
+      a {
+        padding: 13px 15px;
+      }
     }
   </style>
 </head>
+
 <body>
   <h1>Liminal Canopy</h1>
 
@@ -41,21 +121,41 @@
     The in-between shelters the canopy.
   </p>
 
-  <p>
+  <p class="description">
     A threshold for sound, text, evidence, and Noir Rocaille.
+  </p>
+
+  <p>
+    Sound and text works at the threshold.
+  </p>
+
+  <p>
+    Most texts are written in Japanese. Machine translation may miss the rhythm, form, and tone.
   </p>
 
   <h2>Sound</h2>
   <ul>
-    <li><a href="https://on.soundcloud.com/q2HDXQPohzhxjuwh2D">SoundCloud</a></li>
-    <li><a href="ここにBandcampのURL">Bandcamp</a></li>
+    <li>
+      <a href="https://on.soundcloud.com/q2HDXQPohzhxjuwh2D" target="_blank" rel="noopener noreferrer">
+        SoundCloud
+      </a>
+    </li>
   </ul>
 
   <h2>Text</h2>
   <ul>
-    <li><a href="https://note.com/laylahs">Laylahs / note</a></li>
+    <li>
+      <a href="https://note.com/laylahs" target="_blank" rel="noopener noreferrer">
+        Laylahs / note
+      </a>
+    </li>
   </ul>
 
+  <p class="note">
+    Liminal Canopy gathers sound, fiction, theatre texts, visual studies, evidence layers, and fragments.
+  </p>
+</body>
+</html>
 
 </body>
 </html>
