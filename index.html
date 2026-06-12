@@ -7,39 +7,93 @@
 
   <style>
     :root {
-      --bg: #f7f5ef;
-      --text: #161616;
-      --muted: #5f5b52;
-      --line: #d8d2c4;
-      --button-bg: rgba(255, 255, 255, 0.45);
-      --button-bg-hover: rgba(255, 255, 255, 0.8);
+      --bg: #f6f2ea;
+      --text: #151515;
+      --muted: #625d53;
+      --soft: #8b8376;
+      --line: #d8d0c1;
+      --card: rgba(255, 255, 255, 0.48);
+      --card-hover: rgba(255, 255, 255, 0.78);
+      --shadow: rgba(40, 32, 22, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 46px 22px 64px;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.75;
-      background: var(--bg);
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(220, 210, 192, 0.45), transparent 38%),
+        var(--bg);
       color: var(--text);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        "YuMincho",
+        "Noto Serif JP",
+        serif;
+      line-height: 1.75;
       font-size: 18px;
     }
 
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 54px 22px 72px;
+    }
+
+    header {
+      margin-bottom: 46px;
+    }
+
     h1 {
+      margin: 0 0 24px;
+      font-size: clamp(2.8rem, 10vw, 5.4rem);
+      font-weight: 400;
+      letter-spacing: 0.035em;
+      line-height: 1.02;
+    }
+
+    .tagline {
       margin: 0 0 26px;
-      font-size: clamp(2.4rem, 9vw, 4rem);
-      font-weight: normal;
-      letter-spacing: 0.03em;
-      line-height: 1.08;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      line-height: 1.45;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .definition {
+      max-width: 720px;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .definition strong {
+      font-weight: 500;
+    }
+
+    section {
+      margin-top: 44px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
     }
 
     h2 {
-      margin-top: 42px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
+      margin: 0 0 10px;
       font-size: 1.25rem;
-      font-weight: normal;
+      font-weight: 400;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 26px 0 6px;
+      font-size: 1.18rem;
+      font-weight: 400;
       letter-spacing: 0.04em;
     }
 
@@ -47,126 +101,267 @@
       margin: 0 0 18px;
     }
 
-    .statement {
-      margin: 28px 0 32px;
-      font-style: italic;
+    .muted {
       color: var(--muted);
     }
 
-    .description {
-      margin-bottom: 28px;
+    .small {
+      font-size: 0.96rem;
+      color: var(--soft);
     }
 
-    ul {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      padding: 20px 20px 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--card);
+      box-shadow: 0 12px 34px var(--shadow);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .role {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    ul.links {
       list-style: none;
       padding: 0;
-      margin: 16px 0 0;
+      margin: 18px 0 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
-    li {
-      margin: 12px 0;
-    }
-
-    a {
+    a.button {
       display: block;
       padding: 14px 16px;
       border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--button-bg);
+      border-radius: 12px;
+      background: var(--card);
       color: var(--text);
       text-decoration: none;
+      transition:
+        background 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
-    a::after {
+    a.button::after {
       content: " ↗";
+      color: var(--soft);
     }
 
-    a:hover {
-      background: var(--button-bg-hover);
+    a.button:hover {
+      background: var(--card-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px var(--shadow);
     }
 
-    .note {
-      margin-top: 32px;
-      font-size: 0.95rem;
+    .statement {
+      margin-top: 28px;
+      padding: 22px 20px;
+      border-left: 1px solid var(--line);
       color: var(--muted);
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 54px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card.wide {
+        grid-column: 1 / -1;
+      }
+
+      ul.links.two {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 560px) {
       body {
-        padding: 36px 18px 54px;
         font-size: 17px;
         line-height: 1.7;
       }
 
-      h1 {
-        margin-bottom: 22px;
+      main {
+        padding: 38px 18px 58px;
       }
 
-      h2 {
-        margin-top: 34px;
+      header {
+        margin-bottom: 38px;
       }
 
-      a {
-        padding: 13px 15px;
+      section {
+        margin-top: 36px;
+        padding-top: 22px;
+      }
+
+      .card {
+        padding: 18px 16px 16px;
       }
     }
   </style>
 </head>
 
 <body>
-  <h1>Liminal Canopy</h1>
+  <main>
+    <header>
+      <h1>Liminal Canopy</h1>
 
-  <p class="statement">
-    The canopy doesn’t shelter the in-between.<br>
-    The in-between shelters the canopy.
-  </p>
+      <p class="tagline">
+        The canopy doesn’t shelter the in-between.<br>
+        The in-between shelters the canopy.
+      </p>
 
-  <p class="description">
-    A threshold for sound, text, evidence, and Noir Rocaille.
-  </p>
+      <p class="definition">
+        <strong>Liminal Canopy</strong> is a threshold-state that rewrites space:
+        a field where sound, text, residue, visual studies, and evidence gather into one time-feel.
+      </p>
 
-  <p>
-    Sound and text works at the threshold.
-  </p>
+      <div class="statement">
+        Atmosphere over architecture.<br>
+        Beauty, brutality, residue, and evidence under one shifting canopy.
+      </div>
+    </header>
 
-  <p>
-    Most texts are written in Japanese. Machine translation may miss the rhythm, form, and tone.
-  </p>
+    <section>
+      <h2>Structure</h2>
 
-  <h2>Sound</h2>
-  <ul>
-    <li>
-      <a href="https://on.soundcloud.com/q2HDXQPohzhxjuwh2D" target="_blank" rel="noopener noreferrer">
-        SoundCloud
-      </a>
-    </li>
-    <li>
-      <a href="https://arhe.bandcamp.com/" target="_blank" rel="noopener noreferrer">
-        Bandcamp
-      </a>
-    </li>
-  </ul>
+      <div class="grid">
+        <div class="card wide">
+          <div class="role">Atelier / imprint / production body</div>
+          <h3>SUR undāre</h3>
+          <p>
+            SUR undāre gathers releases, visual studies, art direction, and the surface-work of Liminal Canopy.
+          </p>
+          <p class="small">
+            Not only a label, but an atelier: a place where sound, image, atmosphere, and evidence are arranged.
+          </p>
+        </div>
 
-  <h2>Text</h2>
-  <ul>
-    <li>
-      <a href="https://note.com/laylahs" target="_blank" rel="noopener noreferrer">
-        Laylahs / note
-      </a>
-    </li>
-  </ul>
+        <div class="card">
+          <div class="role">Sound artist</div>
+          <h3>ァるヶ-</h3>
+          <p>
+            Sound works at the threshold: pulse, sway, abrasion, distance, and residue.
+          </p>
+        </div>
 
-  <h2>Visual</h2>
-  <ul>
-    <li>
-      <a href="https://www.behance.net/surundre" target="_blank" rel="noopener noreferrer">
-        Behance
-      </a>
-    </li>
-  </ul>
+        <div class="card">
+          <div class="role">Text / literature</div>
+          <h3>クロノ紙魚</h3>
+          <p>
+            Fiction, theatre texts, fables, dream procedures, and prose forms that move through time, paper, and traces.
+          </p>
+        </div>
 
-  <p class="note">
-    Liminal Canopy gathers sound, fiction, theatre texts, visual studies, evidence layers, and fragments.
-  </p>
+        <div class="card wide">
+          <div class="role">Aesthetic grammar</div>
+          <h3>Noir Rocaille</h3>
+          <p>
+            Rococo manners as disguise. Street grit as contamination. Archive as evidence layer.
+          </p>
+          <p>
+            Under Noir Rocaille, still life turns crime scene:
+            mess is proof, neatness is camouflage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+
+      <h3>Sound</h3>
+      <p class="muted">
+        Sound works by ァるヶ-.
+      </p>
+
+      <ul class="links two">
+        <li>
+          <a class="button" href="https://on.soundcloud.com/q2HDXQPohzhxjuwh2D" target="_blank" rel="noopener noreferrer">
+            ァるヶ- / SoundCloud
+          </a>
+        </li>
+        <li>
+          <a class="button" href="https://arhe.bandcamp.com/" target="_blank" rel="noopener noreferrer">
+            ァるヶ- / Bandcamp
+          </a>
+        </li>
+      </ul>
+
+      <h3>Text</h3>
+      <p class="muted">
+        Text works by クロノ紙魚.
+      </p>
+
+      <ul class="links">
+        <li>
+          <a class="button" href="https://note.com/laylahs" target="_blank" rel="noopener noreferrer">
+            クロノ紙魚 / note
+          </a>
+        </li>
+      </ul>
+
+      <h3>Visual Studies</h3>
+      <p class="muted">
+        Visual studies and art direction by SUR undāre.
+      </p>
+
+      <ul class="links">
+        <li>
+          <a class="button" href="https://www.behance.net/surundre" target="_blank" rel="noopener noreferrer">
+            SUR undāre / Behance
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Note</h2>
+
+      <p>
+        Most text works are written in Japanese. Machine translation may follow the meaning,
+        but it may miss rhythm, form, historical texture, and tone.
+      </p>
+
+      <p class="muted">
+        Liminal Canopy is not a genre label. It is a method:
+        a way of letting a state arrive before the place, and letting the place become its surface.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        Liminal Canopy — sound, text, visual studies, evidence, and Noir Rocaille.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>  </p>
 </body>
 </html> 
